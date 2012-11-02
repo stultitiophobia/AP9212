@@ -1,11 +1,11 @@
-<?php
+Ôªø<?php
 
 /*
 ------------------------------------------------------------------------------
 APC_Masterswitch-SNMP-Tool - AP9212 - v.1.0.6 (C) 2009 by Martin Fuchs
 
-‹bergabe per CMD: APC_MS.php X Y [X=Outlet; Y=Status: AN, AUS, NEUSTART]
-‹bergabe per HTTP: APC_MS.php?outlet=#&status=# [Status: AN, AUS, NEUSTART]
+√úbergabe per CMD: APC_MS.php X Y [X=Outlet; Y=Status: AN, AUS, NEUSTART]
+√úbergabe per HTTP: APC_MS.php?outlet=#&status=# [Status: AN, AUS, NEUSTART]
 ------------------------------------------------------------------------------
 */
 
@@ -25,18 +25,18 @@ echo $sysname." - ".$syslocation." - ".$host."\n";
 echo "\n";
 */
 
-if (!empty($_SERVER['argv'][1])) { // ‹bergebene Kommandozeilen-Parameter verwenden
+if (!empty($_SERVER['argv'][1])) { // √úbergebene Kommandozeilen-Parameter verwenden
   if ($_SERVER['argv'][1] >= 1 AND $_SERVER['argv'][1] <= 8)
     $outlet = $_SERVER['argv'][1];    
   else
-    die("Es ist ein Fehler aufgetreten: Nur Outlet 1 - 8 sind zul‰ssig !");
+    die("Es ist ein Fehler aufgetreten: Nur Outlet 1 - 8 sind zul√§ssig !");
   }
 
-elseif (!empty($_GET['outlet'])) { // ‹bergebene HTTP-Parameter verwenden
+elseif (!empty($_GET['outlet'])) { // √úbergebene HTTP-Parameter verwenden
   if ($_GET['outlet'] >= 1 AND $_GET['outlet'] <= 8)
     $outlet = $_GET['outlet'];    
   else
-    die("Es ist ein Fehler aufgetreten: Nur Outlet 1 - 8 sind zul‰ssig !\n");
+    die("Es ist ein Fehler aufgetreten: Nur Outlet 1 - 8 sind zul√§ssig !\n");
   }
   
 if (!isset($outlet)) 
@@ -48,22 +48,22 @@ $statusdescr_in = array(
   "NEUSTART" => "3"
   );
 
-if (!empty($_SERVER['argv'][2])) { // ‹bergebene Kommandozeilen-Parameter verwenden
+if (!empty($_SERVER['argv'][2])) { // √úbergebene Kommandozeilen-Parameter verwenden
     if ($_SERVER['argv'][2] == 'AN' || $_SERVER['argv'][2] == 'AUS' || $_SERVER['argv'][2] == 'NEUSTART') {    
       $status = $statusdescr_in[$_SERVER['argv'][2]];
       $set = snmpset($host, $community, $string1.$outlet,"i",$status);
       }
     else
-      die("Es ist ein Fehler aufgetreten: Nur Status AN, AUS oder NEUSTART zul‰ssig !\n");    
+      die("Es ist ein Fehler aufgetreten: Nur Status AN, AUS oder NEUSTART zul√§ssig !\n");    
    }
 
-elseif (!empty($_GET['status'])) { // ‹bergebene HTTP-Parameter verwenden
+elseif (!empty($_GET['status'])) { // √úbergebene HTTP-Parameter verwenden
     if ($_GET['status'] == 'AN' || $_GET['status'] == 'AUS' || $_GET['status'] == 'NEUSTART') {
       $status = $statusdescr_in[$_GET['status']];
       $set = snmpset($host, $community, $string1.$outlet,"i",$status);
       }
     else
-      die("Es ist ein Fehler aufgetreten: Nur Status AN, AUS oder NEUSTART zul‰ssig !\n");    
+      die("Es ist ein Fehler aufgetreten: Nur Status AN, AUS oder NEUSTART zul√§ssig !\n");    
    }
 
 $getoutletname = trim(strtr(snmpget($host, $community, $string2.$outlet),"\""," "));
