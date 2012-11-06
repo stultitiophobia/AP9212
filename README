@@ -1,0 +1,2 @@
+PHP code to toggle the power outlets of the APC9212 unit via webinterface or commandline.
+The script uses SNMP to communicate with the APC9212.
