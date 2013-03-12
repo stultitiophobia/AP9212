@@ -2,7 +2,8 @@
 
 /*
 ------------------------------------------------------------------------------
-APC_Masterswitch-SNMP-Tool - AP9212 - v.1.0.6 (C) 2009 by Martin Fuchs
+APC_Masterswitch-SNMP-Tool - AP9212 - v.1.0.6 (C) 2009 Martin Fuchs
+                          -> https://github.com/trendchiller/AP9212
 
 Übergabe per CMD: APC_MS.php X Y [X=Outlet; Y=Status: AN, AUS, NEUSTART]
 Übergabe per HTTP: APC_MS.php?outlet=#&status=# [Status: AN, AUS, NEUSTART]
